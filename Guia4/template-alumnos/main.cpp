@@ -1,22 +1,30 @@
 #include <iostream>
 #include "cases.h"
 #include <vector>
+#include <math.h>
 
 using namespace std;
-
 /*
-
 int main()
 {
-  
-    vector<int> enteros= {5, -323, 253, 0, -7, 100};
-    vector<int> vacio= {};
-    vector<int> todosIguales = {1,1,1,1,1,1,1,1,1,1,1};
+
+ bool res = asegurar(maximoComunDivisor(1,1), 1);
+    res &= asegurar(maximoComunDivisor(1,2), 1);
+    res &= asegurar(maximoComunDivisor(6,2), 2);
+    res &= asegurar(maximoComunDivisor(17,19), 1);
+    res &= as-egurar(maximoComunDivisor(100,0), 100);
+    res &= asegurar(maximoComunDivisor(100,10), 10);
+    res &= asegurar(maximoComunDivisor(28,56), 28);
+    res &= asegurar(maximoComunDivisor(6,10), 2);
+    res &= asegurar(maximoComunDivisor(-6,10), 2);
+    res &= asegurar(maximoComunDivisor(10,-6), 2);
+    res &= asegurar(maximoComunDivisor(0,1), 1);
     
-    if (pertenece(100,enteros)) 
-        cout << "perteneco " << endl;
+    if (promedio(notas)) 
+        cout << "perteneco " << endl; 
     else
-        cout << " no perteneco " << endl;
+    for (int i = 0; i < 9; i++)
+        cout << " maximoComunDivisor " <<  maximoComunDivisor(0,1) << endl;
 
     return 0;
 }
@@ -39,7 +47,7 @@ int main()
     cout << "Test 04" << endl;
     exitos += test04_desvioEstandar() ? 1 : 0;
     cout << "Exitos acumulados: " << exitos << endl; 
-    /*cout << "Test 05" << endl;
+    cout << "Test 05" << endl;
     exitos += test05_fibonacci() ? 1 : 0;
     cout << "Exitos acumulados: " << exitos << endl; 
     cout << "Test 06" << endl;
@@ -56,7 +64,7 @@ int main()
     cout << "Exitos acumulados: " << exitos << endl; 
     cout << "Test 10" << endl;
     exitos += test10_fraccion() ? 1 : 0;
-*/
+
     cout << "# Ejercicios correctos:" << exitos << endl;
     cout << "# Ejercicios incorrectos: " << total - exitos << endl;
 }
