@@ -28,10 +28,13 @@ bool test01_existePico(){
     vector<int> sinPico = {1,2,3,4,5,6,7,8};
 
     bool res = asegurar(existePico(tresConPicos), true);
-    res &= asegurar(existePico(tresSinPicos), false);
-    res &= asegurar(existePico(variosPicos), true);
-    res &= asegurar(existePico(sinPico), false);
 
+    res &= asegurar(existePico(tresSinPicos), false);
+ 
+    res &= asegurar(existePico(variosPicos), true);
+ 
+    res &= asegurar(existePico(sinPico), false);
+ 
     printEndTest(testNumber, testName);
     return res;
 }
@@ -65,12 +68,21 @@ bool test03_indiceMinSubsec(){
     vector<int> todosIguales = {1,1,1,1};
     vector<int> negativos = {-1,-4,-5,1,1,1};
     vector<int> subsec = {0,-4,-5,1,1,0};
-
+    vector<int> otro_neg = {-6, -4, -5, 1, 1, 0};
     
     bool res = asegurar(indiceMinSubsec(unElemento, 0,0) == 0, true);
-    res &= asegurar(indiceMinSubsec(minimoAlPrincipio, 0,4) == 0, true);
-    res &= asegurar(indiceMinSubsec(minimoAlFinal, 0,5) == 5, true);
+ 
+
+    int pos = 0;
+    res &= asegurar(pos = indiceMinSubsec(minimoAlPrincipio, 0,4) == 0, true);
+
+
+    res &= asegurar(pos = indiceMinSubsec(minimoAlFinal, 0,5) == 5, true);
+
+
+
     res &= asegurar(indiceMinSubsec(negativos, 0,5) == 2, true);
+
     res &= asegurar(indiceMinSubsec(subsec, 1,4) == 2, true);
 
     printEndTest(testNumber, testName);
@@ -96,8 +108,10 @@ bool test04_ordenar1(){
 
     ordenar1(unElemento);
     bool res = asegurar(unElemento == unElemento_out, true);
+
     ordenar1(dosElementos);
     res &= asegurar(dosElementos == dosElementos_out, true);
+
     ordenar1(desordenadaSinRepes);
     res &= asegurar(desordenadaSinRepes == desordenadaSinRepes_out, true);
     ordenar1(desordenadaConRepes);
@@ -119,6 +133,8 @@ bool test05_ordenar2(){
     vector<int> unElemento_out = {0};
     ordenar2(unElemento);
     bool res = asegurar(unElemento == unElemento_out, true);
+    if (res) cout<< "paso test 1" << endl;
+    else cout<< " no paso test 1" << endl;
 
     vector<int> todosIguales = {0,0,0,0,0,0};
     vector<int> todosIguales_out = {0,0,0,0,0,0};

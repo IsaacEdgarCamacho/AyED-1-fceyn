@@ -10,7 +10,7 @@ using namespace std;
 // Ejercicio 1
 bool existePico(vector<int> v);
 // Ejercicio 2
-int mcd(int m, int n);
+int mcd(int, int);
 // Ejercicio 3
 int indiceMinSubsec(vector<int> v, int i, int j);
 // Ejercicio 4
