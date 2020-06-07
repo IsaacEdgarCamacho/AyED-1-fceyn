@@ -45,3 +45,6 @@ void division (int dividendo, int divisor, int& cociente,int& resto){
         cociente = dividendo / divisor;
     }
 }
+
+
+
