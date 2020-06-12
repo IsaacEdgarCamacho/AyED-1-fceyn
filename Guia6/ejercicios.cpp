@@ -50,7 +50,7 @@ vector<vector<int> > productoVectorial(vector<int> u, vector<int> v){
 /**************************************************************************************************/
 bool esCuadrada(vector<vector<int> > &m) {
 	
-	return false;
+	return m.size() == m[0].size();
 }
 
 void trasponer(vector<vector<int> > &m) {
@@ -85,30 +85,189 @@ vector<vector<int> > multiplicar(vector<vector<int> > m1, vector<vector<int> > m
 /**************************************************************************************************/
 /*					Ejercicio 4 										*/
 /**************************************************************************************************/
+void sumaVecinos(vector<vector<int> > m, int a, int b,int& acumVecinos, int& cantVecinos){
+
+    int mfilas = m.size(),
+        mColumnas = m[0].size();
+
+    for(int i = a-1; i <= a+1; i++){
+        for(int j = b-1; j <= b+1; j++){
+            if(i >= 0 && i < mfilas && j >= 0 && j < mColumnas){
+                acumVecinos += m[i][j];
+                cantVecinos++;
+            }
+        }
+     }
+}
 
 
 vector<vector<int> > promediar(vector<vector<int> > m){
 	//COMPLETAR
-	vector<vector<int> > res;
+	vector<vector<int> > res(m.size(), vector<int>(m[0].size()));
+    int acumVecinos = 0,
+        cantVecinos = 0;
+    
+
+    for(int i = 0; i < m.size(); i++){
+        for(int j = 0; j < m[i].size(); j++){
+
+            sumaVecinos(m,i,j, acumVecinos, cantVecinos);
+            res[i][j] = acumVecinos / cantVecinos;
+            acumVecinos = 0;
+            cantVecinos = 0;
+        }
+     }
 	return res;
 }
+/**************************************************************************************************/
+/*					Ejercicio 5 										*/
+/**************************************************************************************************/
+bool esPico(vector<vector<int> > m, int a, int b){
+
+    int mfilas = m.size(),
+        mColumnas = m[0].size(),
+        elem = m[a][b];
+    bool guarda = true;
+
+    for(int i = a-1; i <= a+1; i++){
+        for(int j = b-1; j <= b+1; j++){
+            if(i >= 0 && i < mfilas && j >= 0 && j < mColumnas){
+                guarda = guarda && (elem >= m[i][j]);
+            }
+        }
+     }
+    return guarda;
+}
+
 
 int contarPicos(vector<vector<int> > m){
 	//COMPLETAR
-	return true;
+	vector<vector<int> > res(m.size(), vector<int>(m[0].size()));
+    int acumPicos = 0;
+
+    for(int i = 0; i < m.size(); i++){
+        for(int j = 0; j < m[i].size(); j++){
+            if ( esPico(m,i,j) )
+                acumPicos ++;
+                
+        }
+     }
+     cout << "acumPico " << acumPicos << endl;
+	return acumPicos;
+}
+
+/**************************************************************************************************/
+/*					Ejercicio 6 										*/
+/**************************************************************************************************/
+bool esTriangularInf(vector<vector<int> > m){
+    bool guarda = true;
+
+    for(int i = 0; i < m.size(); i++){
+        for(int j = 0; j < m[i].size(); j++){
+            if(i > j)
+                guarda = guarda && ( m[i][j] == 0 );
+        }
+     }
+
+    return guarda;
+}
+
+bool esTriangularSup(vector<vector<int> > m){
+
+    bool guarda = true;
+
+    for(int i = 0; i < m.size(); i++){
+        for(int j = 0; j < m[i].size(); j++){
+            if(i < j)
+                guarda = guarda && ( m[i][j] == 0 );
+        }
+     }
+
+    return guarda;
 }
 
 bool esTriangular(vector<vector<int> > m){
 	//COMPLETAR
-	return true;
+	return esCuadrada(m) && (esTriangularInf(m) || esTriangularSup(m));
 }
+
+
+/**************************************************************************************************/
+/*					Ejercicio 7 										*/
+/**************************************************************************************************/
+
+int abs(int t){
+    return (t >= 0)? t : -t;
+}
+
+bool seAmenazan(int i1, int j1, int i2, int j2){
+    return (  i1 != i2 or j1 != j2) && (i1 == i2 or j1 == j2 or abs(i1 - i2) == abs(j1 - j2));
+}
+
+
+bool amenazaAlguna(vector<vector<int> > m, int i1, int j1){
+   bool guarda = false;
+
+    for(int i2 = 0; i2 < m.size(); i2++){
+        for(int j2 = 0; j2 < m[i2].size(); j2++){
+            if( m[i2][j2] == 1)
+                guarda = guarda || seAmenazan(i1, j1, i2, j2);
+        }
+     }
+
+    return guarda;    
+}
+
+bool existeAmenaza(vector<vector<int> > m){
+   bool guarda = false;
+
+    for(int i = 0; i < m.size(); i++){
+        for(int j = 0; j < m[i].size(); j++){
+            if( m[i][j] == 1)
+                guarda = guarda || amenazaAlguna(m, i,j);
+        }
+     }
+
+    return guarda;    
+}
+
 
 bool hayAmenaza(vector<vector<int> > m){
 	//COMPLETAR
-	return true;
+    return existeAmenaza(m);
 }
 
+
+/**************************************************************************************************/
+/*					Ejercicio 8 										*/
+/**************************************************************************************************/
+int sumoDiagonal(vector<vector<int> > m) {
+
+    int suma = 0;
+    for(int i = 0; i < m.size(); i++){
+        for(int j = 0; j < m[i].size(); j++)
+            if( i == j)
+                suma += m[i][j];        
+     }
+    return suma;
+}
+
+int sumoDiagonalInversa(vector<vector<int> > m) {
+
+    int suma = 0;
+    for(int i = 0; i < m.size(); i++){
+        for(int j = 0; j < m[i].size(); j++)
+            if( i == m[j].size() - j -1)
+                suma += m[i][j];        
+     }
+    return suma;
+}
 int diferenciaDiagonales(vector<vector<int> > m) {
-    //COMPLETAR
-    return 0;
+    int diagonal_1 = 0,
+        diagonal_2 = 0;
+
+    diagonal_1 = sumoDiagonal(m);
+    diagonal_2 = sumoDiagonalInversa(m);
+    
+    return abs (diagonal_1 - diagonal_2);
 }

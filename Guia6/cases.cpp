@@ -251,7 +251,7 @@ bool contarPicosTest_test1(){
 		}
 	}
 
-    bool out = asegurar(contarPicos(vec) == 8, true);
+    bool out = asegurar(contarPicos(vec) == 16, true);
     cout << "Test 1: " << out << endl;
     return out;
 }
