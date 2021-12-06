@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int busquedaBinaria(vector<int> v, int x);
+int busquedaBinaria(vector<int> s, int x);
 int busquedaJumpSearch(vector<int> v, int x);
 int buscar(vector<int> v, int x);
 double ejemplo_como_calcular_tiempos();

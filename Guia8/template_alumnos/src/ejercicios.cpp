@@ -6,11 +6,29 @@ using namespace std;
 
 vector<string> split(string s, char delim){
 	vector<string> v;
+	string aux;
+
+
+	for (int i =  0; i < s.size(); i++){
+		if(s[i]!= delim)
+			aux.push_back(s[i]);
+		else{
+			if(!aux.empty()){
+				v.push_back(aux);
+				aux.clear();
+			}
+		}
+	}
+	if(!aux.empty()){
+		v.push_back(aux);
+		aux.clear();
+	}
 	return v;
 }
 
 string darVueltaPalabra(string s){
 	string res;
+
 	return res;
 }
 

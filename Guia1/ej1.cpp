@@ -1,17 +1,13 @@
+// Ejercicio 1: escribir un programa que sume uno a 10
+
 #include <iostream>
 
-int main() {
+int f(int x){
+    return x+1;
+}
 
-   // declaracion de las variables
-   float x = 3.0;
-   int y = 8, z;
+int main(){
 
-   // operacion
-
-   z = y / x;
-   // salida por consola
-   std::cout << z;
-
-
-   return 0;
+    std::cout << "El resultado es: " << f(10) << std::endl;
+    return 0;   
 }

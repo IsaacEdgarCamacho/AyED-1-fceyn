@@ -7,9 +7,65 @@
 
 using namespace std;
 
-int busquedaBinaria(vector<int> v, int x){
-	return -1;
+int busquedaBinaria(vector<int> v, int x)
+{
+    int first = 0;
+    int middle;
+    int last = v.size() - 1;
+ 
+
+    
+    while (first <= last) {
+        middle = (first + last) / 2;
+ 
+        if (x == v[middle]) {
+            cout << "Se encuentra en la posición " << middle + 1 << endl;
+            return middle;
+        } else {
+            if (v[middle] > x) {
+                last = middle - 1;
+            } else {
+                first = middle + 1;
+            }
+        }
+    }
+    return -1;
 }
+
+// int busquedaBinaria(vector<int> v, int x){
+// 	return 0;
+// }
+
+// int busquedaBinaria(vector<int> s, int x) {
+//     int result = -1;
+
+//     if (s.size() == 0) {
+//         return -1;
+//     } else if (s.size() == 1) {
+//         if (s[0] == x )return 0; 
+//     } else if (x <= s[0]) {
+//         if( s[0] == x) return 0;
+//     } else if (x >= s[s.size() - 1]) {
+//         if (s[s.size() - 1] == x) return s.size() - 1;
+
+//     } else {
+//         int low = 0;
+//         int high = s.size() - 1;
+//         while (low + 1 < high) {
+//             int mid = (low + high) / 2;
+//             if (s[mid] <= x) {
+//                 low = mid;
+//             } else {
+//                 high = mid;
+//             }
+//         }
+        
+//         if (s[low] == x)
+//             result = low;
+
+//     }
+//     return result;
+// }
 
 int busquedaJumpSearch(vector<int> v, int x){
 	return -1;
@@ -65,16 +121,38 @@ int indicePico(vector<int> v){
 	return -1;
 }
 
+
+
+
 int puntoFijo(vector<int> v){
-	return -1;
+    int i= 0;
+    int result = -1;
+    while (i < v.size() && v[i]!=i){
+        i++;
+    }
+
+    if (v[i]==i)
+        result = i;
+	return result;
 }
+
+
+
 
 int encontrarRotado(vector<int> v, int x){
 	return -1;
 }
 
 int menorMasGrande(vector<int> v, int x){
-	return -1;
+    int i= 0;
+    int result = -1;
+    while (i < v.size() && x > v[i]){
+        i++;
+    }
+
+    if (i < v.size())
+        result = i;
+	return result;
 }
 
 vector<int> masCercanoK(vector<int> v, int k,  int x){

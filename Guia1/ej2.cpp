@@ -1,17 +1,13 @@
+// Ejercicio 2. Modificar el programa anterior para que f tome dos parámetros de tipo int y los sume.
+
 #include <iostream>
 
-int main(){
-    
-    float x = 3.0;
-    int y = 8, z;
-    bool test;
-    test = (x = 5) && (y < 10);
+int f(int x, int y){
+    return x+y;
+}
 
-    if (test)
-        std::cout << "fue verdadero";
-    else
-    {
-        std::cout << "fue falso";
-    }
+int main(){
+
+    std::cout << "El resultado es: " << f(10,11) << std::endl;
     return 0;
 }

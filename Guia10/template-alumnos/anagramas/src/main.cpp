@@ -19,7 +19,7 @@ int main(){
     int cantidadAnagrama = 0;
     for (int i = 0; i < listaPalabras.size(); ++i)
     {
-        if (esAnagrama(listaPalabras[i], palabra)) {
+        if (esAnagrama1(listaPalabras[i], palabra)) {
             cout << "Son anagramas: " << listaPalabras[i] << " y " << palabra << endl;
             cantidadAnagrama++;
         }
@@ -49,10 +49,24 @@ bool esAnagrama2(string p1, string p2){
 	return true;
 }
 
-void ordenarString(string &palabra){
-    //COMPLETAR
-    //Asumir que palabra solo contiene letras minusculas de a-z (sin enie). Implementar cualquier algoritmo
+void swap (string &s, int a, int b){
+    int c = s[a];
+    s[a] = s[b];
+    s[b] = c; 
+}
 
+void insert(string &s, int i) {
+	for(int j=i; j>0 && s[j] > s[j-1]; j--) {
+		swap(s, j, j-1);
+	}
+}
+void insertionSort(string &arr) {
+	for(int i=0; i<arr.size(); i++) {
+		insert(arr,i);
+	}
+}
+void ordenarString(string &palabra){
+    insertionSort(palabra);
 }
 
 int charToPrimo(char c){

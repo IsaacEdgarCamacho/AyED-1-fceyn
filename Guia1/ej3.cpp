@@ -1,14 +1,18 @@
+
+// Ejercicio 3. Modificar el programa anterior para que f tome dos parámetros x e y de tipo int y los sume sólo si x > y, en
+// caso contrario el resultado será el producto.
+
 #include <iostream>
 
-int main()
-{
-   int i = 0;
-   int valor = 0;
-   // imprimo los valores entre floatntes entre 1.0 y 10.0
-   while(i < 10) {
-      std::cout << valor << std::endl;
-      valor++; // incremento en 1 valor
-   }
+int f(int x, int y){
+    if (x > y) {
+        return x+y;
+    }else{
+        return x*y;
+    }
+}
 
-   return 0;
+int main(){
+    std::cout << "El resultado es: "<< f(11,30)<<std::endl;
+    return 0;
 }
